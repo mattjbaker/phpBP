@@ -1,0 +1,195 @@
+
+.matts-carousel-container{
+  border:1px solid #ddd;
+  height:180px;
+   margin: 0 15px 15px;
+   padding:3px;
+   text-align:left;
+   position:relative;
+}
+.matts-carousel-headder{
+    top:15px;
+    left:15px;
+    font-size:12px;
+    font-weight:700;
+    color:#959595;
+    letter-spacing:1px;
+    text-transform:uppercase; 
+}
+
+.matts-carousel-row{
+   height:100px;
+   margin-top:40px;
+   margin-left:5px;
+   margin-right:5px;
+   overflow:hidden;
+}
+.matts-carousel-slide{
+    margin:auto;
+    height:96px;
+    padding:3px;
+    text-align:center;
+    vertical-align:middle;
+    overflow-y:no-display;
+}
+
+.matts-carousel-unit{
+    vertical-align: middle;
+    height:96px;
+    width:120px;
+    cursor:pointer;
+    display:table-cell;
+    margin:auto;
+    text-align: center;
+}
+
+.matts-carousel-unit img{
+    height:95%;
+    width:95%;
+}
+
+.matts-carousel-unit img:hover{
+    height:100%;
+    width:100%;
+}
+
+.mc-data{
+    background-color:black;
+    opacity:0.4;
+    position:absolute;
+}
+
+.mc-last-btn{
+    left: 5px;
+    z-index: 100;
+}
+
+.mc-next-btn{
+    right: 5px;
+    z-index: 100;
+}
+
+.matts-carousel-button:hover{
+    background-color:grey;
+    font-size:30px;
+    padding-top:25px;
+    padding-bottom:20px;
+}
+
+.matts-carousel-button:active{
+    background-color:grey;
+    font-size:25px;
+    padding-top:30px;
+    padding-bottom:25px;
+}
+
+.matts-carousel-button {
+    z-index:99;
+    position: absolute;
+    padding: 2px;
+    width: 50px;
+    font-size:25px;
+    padding-top:30px;
+    padding-bottom:25px;
+    height:100px;
+    margin-top: 40px;
+    background-color: grey;
+    cursor: pointer;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    margin-bottom: auto;
+    display:none;
+    opacity:0;
+}
+
+
+/*CURSOR OBJECT*/
+.matts-carousel-cursor{
+    display:none;
+    opacity:0;
+    
+}
+
+.matts-carousel-cursor table{
+    padding:0px;
+    width:100%;
+    height:10px;
+    border:1px solid #959595;
+}
+
+.matts-carousel-cursor table td:nth-last-child(1){
+    border-right:2px solid #959595;
+}
+
+.matts-carousel-cursor table td{
+     height:10px;
+    background-color:lightgrey;
+    border-right:2px solid #333;
+    cursor:pointer;
+}
+
+.matts-carousel-cursor .matts-carousel-active{
+    background-color:#333;
+}
+
+.matts-carousel-toolbar{
+    width:100%;
+    position:absolute;
+    z-index:100;
+    background-color:black;
+    
+}
+
+/*styles for the ituns slider style gallery*/
+
+mc-slider{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 0 0 0;
+    position: relative;
+}
+
+mc-slider img{
+    display: block;
+}
+
+.mcb-gallery, .mcs-gallery{
+    float: left;
+}
+
+.mcb-gallery{
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.mcb-gallery img{
+    position: absolute;
+}
+
+.mcs-gallery{
+    width: 100px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.mc-slider-next{  
+    display: block;  
+    width: 47px;  
+    height: 43px;  
+    background: url(images/arrow.png);  
+    position: relative;  
+    left:425px;
+    top: 257px;  
+
+}  
+  
+.mc-slider-next:hover{  
+    background: url(images/arrowmo.png);  
+}  
+  
+.clear{  
+    clear: both;  
+}  

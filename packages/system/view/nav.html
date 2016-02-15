@@ -1,0 +1,62 @@
+<!--The dynamic bootstrap nav for angular js is bar far the most complex component in this frame-work.
+I suggest making hard backups as you work here.-->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+    <div class="navigation" ng-controller="HeaderController">
+        <div class="navbar-header">
+           <button nav-icon type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#navcollapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>    
+            <a navbar-brand class="navbar-brand animated flip" href="home">   
+                <i class="fa fa-cogs "></i>
+                <i class="fa fa-cog fa-spin"></i>
+            </a>
+        </div>   
+        
+        <div class="collapse" id="navcollapse">          
+           <ul class="nav navbar-nav navbar-left" ng-if="menu.top.shouldRender(_session())">               
+                <li ng-repeat="item in menu.top.items | orderBy: 'position'" ng-if="item.shouldRender(_session())"
+                    ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" 
+                    ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+                    <a ng-switch-when="dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown-toggle" >
+                        <span ng-bind="item.title"></span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul ng-switch-when="dropdown" auto-drop class="dropdown-menu">
+                        <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(_session());" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+                            <a href="{{subitem.link}}" ng-if="(!subitem.method)" ng-bind="subitem.title"></a>
+                            <a href="#" ng-if="subitem.method" ng-click="resolveMethod(subitem.method)" ng-bind="subitem.title"></a>
+                        </li>
+                    </ul>
+                    <a ng-switch-default href="{{item.link}}" ng-bind="item.title"></a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="collapse navbar-collapse">
+            
+            <navbar-menu></navbar-menu>
+
+            <ul  class="nav navbar-nav navbar-right">
+                <li  ng-if="_authenticated()" class="dropdown pull-right" ng-repeat="item in menu.user.items | orderBy: 'position'">
+                    <a  href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>&nbsp;{{_session().username}}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="subitem in item.items | orderBy: 'position'">
+                            <a ng-if="subitem.title !== 'Logout'" href="{{subitem.link}}" ng-bind="subitem.title"></a>
+                            <a ng-if="subitem.title === 'Logout'" ng-click="_logout()" href="{{subitem.link}}" ng-bind="subitem.title"></a>
+                        </li>
+                    </ul>
+                </li>
+               <li ng-if="!_authenticated()">
+                    <a  href="login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

@@ -1,0 +1,35 @@
+
+<section class="container-fluid main" >
+
+<div data-ng-if="_authenticated()" ng-init="_redirect(_authenticated(),'home')"></div>
+   
+  <standard-msg controller-name="UsersMessageController"></standard-msg>
+ 
+    <div data-ng-if="!_authenticated()" data-ng-controller="UsersLoginController" class="box-one" >
+
+            <div class="title">Sign in</div>
+            <form  ng-submit="login()" name="LoginForm">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                    <input required id="email" type="email" name="email" placeholder="Email" class="form-control" ng-model="user.email"/>
+                    </div>
+                    </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class ="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input required id="password" data-minlength="6" type="password" placeholder="Password" name="password" class="form-control" ng-model="user.password"/>
+                    </div>
+                    </div>
+                <div class="form-group">
+                    <button data-ng-disabled="LoginForm.$invalid" type="submit" class="btn btn-custom inverse submit_button">Sign in</button>
+                    or&nbsp;<a href='register' class="btn btn-custom">Sign up</a>
+                </div>
+                <div class="form-group">
+                    <a href='forgot'>Forgot your password?</a>
+                </div>
+            </form>
+        </div>
+</section>
+  
+

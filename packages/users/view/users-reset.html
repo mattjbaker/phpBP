@@ -1,0 +1,47 @@
+
+<!--USERS REQUEST NEW PASSWORD FORM-->
+
+<section class="container-fluid main">
+<standard-msg controller-name="UsersMessageController"></standard-msg>
+<div data-ng-controller="UsersResetController" class='box-one'>
+<div class="title">Reset password for {{user.email}}</div>
+<form ng-submit="resetpassword()" name="ResetForm" data-ng-if="!success" >
+
+    <div class="form-group">
+        <div class="input-group">
+            <span title="Reveal" class="input-group-addon finger" show-btn 
+                  btn-id="password"
+                  link-id="confirmPassword">
+            </span>
+            <input required  name="password" 
+                   id="password" 
+                   class="form-control"  placeholder="Password"
+                   ng-minlength="6" type="password"
+                   ng-model-options="formBehavior"
+                   ng-model="user.password"/>
+        </div>
+
+        <div ng-if="ResetForm.password.$dirty" ng-messages="ResetForm.password.$error" ng-include=" 'packages/system/view/partials/validator-msg-errors.html'"></div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span title="Reveal" class="input-group-addon finger" show-btn 
+                  btn-id="confirmPassword" link-id="password">
+            </span>
+            <input required  name="confirmPassword" 
+                   compare-to="user.password"
+                   id="confirmPassword" 
+                   class="form-control"  placeholder="Password"
+                   ng-minlength="6" type="password"
+                   ng-blur="ResetForm.confirmPassword.$dirty = true"
+                   ng-model-options="formBehavior"
+                   ng-model="user.confirmPassword"/>
+        </div>
+        <div ng-if="ResetForm.confirmPassword.$dirty" ng-messages="ResetForm.confirmPassword.$error" ng-include=" 'packages/system/view/partials/validator-msg-errors.html'"></div>
+    </div>
+        <div class="form-group save">
+            <button data-ng-disabled="ResetForm.$invalid" type="submit" class="btn btn-custom submit_button">Save</button>
+        </div>
+        </form>
+    </div>
+    </section>

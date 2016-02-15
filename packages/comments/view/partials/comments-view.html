@@ -1,0 +1,66 @@
+<div class="st_{{parent}}">
+    <div ng-repeat="comment in comments" class='comments-view'>     
+        <section collapser class="container-fluid comments-header finger" 
+                 is-col="isCollapsed(id)" depth="level"
+                 parent ="parent"
+                 v-depth ="2"
+                 act-on="comment._id"
+                 ng-if="hasChildren(comment._id) > 0">    
+            <span> 
+                <i class="fa fa-caret-down expand"></i>
+            </span>
+            <span class="author">
+            (By: {{comment.udata.username}} {{comment.created.msec | fromNow}})
+            {{hasChildren(comment._id)| pluralize:'Reply':true:true}}
+            </span>
+        </section>
+        <section class="container-fluid comment-header" ng-if="!hasChildren(comment._id)">    
+            <span >
+                <i class="fa fa-caret-right small light"></i>
+            </span>
+            <span class="author">
+            (By: {{comment.udata.username}} {{comment.created.msec | fromNow}})
+            {{hasChildren(comment._id)|pluralize:'Reply':true:true}}
+            </span>   
+        </section>
+        <section class="container-fluid comments-shell">
+           <textarea  ng-if= "shouldEdit(comment._id)" ng-model="comment.content" class="form-control edible comments-content" ng-blur="updateComment(comment)">
+           </textarea>
+           <div ng-if="!shouldEdit(comment._id)" class="comments-content"> 
+            {{comment.content}}</div>
+        </section>       
+         <!--COMMENTS TOLLBAR-->
+        <div class="small-navbar comments-toolbar" ng-if="auth && level < 9">
+        <ul class ="nav navbar-nav small-nav-menu navbar-collapse collapse artmen">
+            <li ng-if="isAuthor(comment.userid)" ng-click="editComment(comment._id)" class="small-nav-btn finger">
+                <i class="fa fa-edit small"></i>
+            </li>
+            <li ng-if="isAuthor(comment.userid)" ng-click="removeComment(comment._id)" class="small-nav-btn finger">
+                <i class="fa fa-trash-o small"></i>
+            </li>
+            <li class="small-nav-btn finger">
+                <comm-form root="root" style="display:inline;" ng-if='auth' visible="false" parent="comment._id"></comm-form>
+            </li>
+            <li class="small-nav-btn finger" ng-click="isolateComments(parent)" ng-if="hasChildren(comment._id)">
+                <i class="fa fa-eye"></i>
+            </li>
+        </ul>
+        </div>
+         <!--END TOOLBAR-->
+        <br>
+        <comm-obj  data="{'id':comment._id,'lev':level,'root':root,limit:limit}"></comm-obj>  
+        <div class='small-navbar' ng-if="lastIndexOnPage($index) && hasPages(comment._id)">
+            <ul class='nav navbar-nav small-nav-menu'>
+                <li class='small-nav-btn finger' ng-click='loadLast()'>
+                      <i class="fa fa-angle-double-left"></i>
+                </li>
+                <li class="small-nav-btn">{{thread.args.page}}</li>
+                <li>of</li>
+                <li class="small-nav-btn">{{numPages()}}</li>
+                <li class='small-nav-btn finger' ng-click='loadNext()'>
+                      <i class="fa fa-angle-double-right "></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

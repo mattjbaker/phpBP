@@ -1,0 +1,9 @@
+
+<ul class="breadcrumb">
+    <li ng-if='nav.title'>{{nav.title}}</li>
+    <li ng-repeat="link in nav.links | orderBy: 'current'" class='finger'>
+    <a style="line-heigth:2em;" class="finger {{(link.current > 1)? 'inactive' : 'active'}}" id='{{link.id}}' href="{{link.href}}">
+        {{link.title}}
+    </a>
+    </li>
+</ul>

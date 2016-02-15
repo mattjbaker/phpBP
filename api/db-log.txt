@@ -1,0 +1,21 @@
+
+error:[false] |  | {"message":"Query success"} |  | doQuery
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b5e7ead27559781c00002a | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"Query success"} |  | doQuery
+error:[false] |  | {"message":"Query success"} |  | doQuery
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"Query success"} |  | doQuery
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b5e7ead27559781c00002a | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne
+error:[false] |  | {"message":"User found"} | _id,55b6053ad27559c01e00002e | doFindOne

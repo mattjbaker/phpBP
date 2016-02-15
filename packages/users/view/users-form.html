@@ -1,0 +1,87 @@
+<!--USERS ACCOUNT SETTINGS AND REGISTER FORM-->
+       <form ng-submit="register()" name="RegisterForm">
+           <div class="form-group">
+               <div class="input-group">
+                   <span class="input-group-addon" id="name"><i class="fa fa-user"></i></span>
+                   <input required type="text" class="form-control" name="name" 
+                          ng-model-options="formBehavior"
+                          ng-minlength="2"
+                          ng-model="user.name" placeholder="First Name" />
+                   <span class="input-group-addon" id="s2" style="border-left: 0; border-right: 0;">|</span>
+                   <input type="text" class="form-control" name="last" 
+                          required
+                          ng-minlength="2"
+                          ng-model-options="formBehavior"
+                          ng-model="user.last" placeholder="Last Name" />
+               </div>
+               <div ng-if="RegisterForm.last.$dirty || RegisterForm.name.$dirty"
+                    ng-messages="RegisterForm.last.$error || RegisterForm.name.$error"
+                    ng-include=" 'validator-msg-errors'"></div>
+           </div>
+           
+            <div class="form-group">
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input required id="username" type="text"
+                       name="username" placeholder="Username" 
+                       unique-validator
+                       ignore ="{vals:[orig.username]}"
+                       ng-minlength="3"
+                       ng-model-options="formBehavior"
+                       class="form-control" input-integer ng-model="user.username"/>
+                </div> 
+                
+    <div ng-if="RegisterForm.username.$dirty" ng-messages="RegisterForm.username.$pending" ng-include=" 'validator-msg-pending'"></div>
+    <div ng-if="RegisterForm.username.$dirty" ng-messages="RegisterForm.username.$error" ng-include=" 'validator-msg-errors'"></div>            
+            </div>
+            <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                        <input required id="email"
+                               ng-model-options="formBehavior"
+                               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                               unique-validator 
+                               ignore="{vals:[orig.email]}"
+                               type="email" 
+                               name="email" placeholder="Email" class="form-control" ng-model="user.email"/>
+                    </div>
+                <div ng-if="RegisterForm.email.$dirty" ng-messages="RegisterForm.email.$pending" ng-include=" 'validator-msg-pending'"></div>
+    <div ng-if="RegisterForm.email.$dirty" ng-messages="RegisterForm.email.$error" ng-include="'validator-msg-errors'"></div>
+            </div>
+            <div class="form-group" ng-if="!_authenticated()">
+                <div class="input-group">
+                <span title="Reveal" class="input-group-addon finger" show-btn 
+                      btn-id="password"
+                      link-id="confirmPassword">
+                </span>
+                <input required  name="password" 
+                       id="password" 
+                       class="form-control"  placeholder="Password"
+                       ng-minlength="6" type="password"
+                       ng-model-options="formBehavior"
+                       ng-model="user.password"/>
+                </div>
+
+    <div ng-if="RegisterForm.password.$dirty" ng-messages="RegisterForm.password.$error" ng-include=" 'validator-msg-errors'"></div>
+            </div>
+            <div class="form-group" ng-if="!_authenticated()">
+                <div class="input-group">
+                <span title="Reveal" class="input-group-addon finger" show-btn 
+                      btn-id="confirmPassword" link-id="password">
+                </span>
+                <input required  name="confirmPassword" 
+                       compare-to="user.password"
+                       id="confirmPassword" 
+                       class="form-control"  placeholder="Password"
+                       ng-minlength="6" type="password"
+                       ng-blur="RegisterForm.confirmPassword.$dirty=true"
+                       ng-model-options="formBehavior"
+                       ng-model="user.confirmPassword"/>
+                </div>
+    <div ng-if="RegisterForm.confirmPassword.$dirty" ng-messages="RegisterForm.confirmPassword.$error" ng-include=" 'validator-msg-errors'"></div>
+            </div>
+            <div class="form-group">
+                <button ng-if="!_authenticated()" data-ng-disabled="RegisterForm.$invalid || RegisterForm.$pending || RegisterForm.$submitted" type="submit" class="btn btn-custom submit_button">Sign up</button>
+                <button ng-if="_authenticated()"  data-ng-disabled="RegisterForm.$invalid || RegisterForm.$pending "       type="submit" class="btn btn-custom submit_button">Save</button>
+            </div>
+        </form>

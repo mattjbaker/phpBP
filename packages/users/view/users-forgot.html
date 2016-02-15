@@ -1,0 +1,26 @@
+<div class="main">
+<standard-msg controller-name="ForgotMessageController"></standard-msg>
+<div data-ng-controller="UsersForgotController" class="box-one">
+    <div class="title">Password Recover / Reset</div>
+  <form  ng-submit="forgotpassword()" class="forgot-password switch-form" name="ForgotForm">
+    <div class="form-group"> 
+      <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-at"></i></span>
+         <input user-validator placeholder="Email"
+               ng-model-options="formBehavior"
+               ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+               required id="email" type="email" name="email" class="form-control" ng-model="email"/>
+      </div>
+       <div ng-if="ForgotForm.email.$dirty" ng-messages="ForgotForm.email.$pending" ng-include=" 'validator-msg-pending'"></div>
+       <div ng-if="ForgotForm.email.$dirty" ng-messages="ForgotForm.email.$error" ng-include=" 'validator-msg-errors'"></div>
+       <div ng-if="newkey"><a href="/reset/{{newkey}}">{{newkey}}</a></div>
+      </div>
+      <br>
+      <div class='form-group'>
+      <div class="submit">
+        <button data-ng-disabled="ForgotForm.$invalid || ForgotForm.$pending || ForgotForm.$submitted" type="submit" class="btn btn-custom ">Send Request</button>
+      </div>
+      </div>
+  </form>
+  </div>
+</div>

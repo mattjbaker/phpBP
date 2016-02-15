@@ -1,0 +1,21 @@
+<nav ng-if="1 < pages.length || !autoHide" class=" pger">
+  <ul class="pagination" ng-controller="PageController">
+      <li><a ng-click="setCurrent(loopBack(pagination.current,pagination.current+1,pagination.last))">
+              <i class="fa fa-angle-double-left"></i>
+          </a>
+      </li><li><a ng-click="setCurrent(lastPage(pagination.current,pagination.last))">
+              <i class="fa fa-angle-left"></i>
+          </a>
+    </li><li>
+        <a>
+            <input type="text"  name="pagechanger" value="{{pagination.current}}" tabindex='300'  ng-model="pagination.current" 
+                   style="width:15px; border:none"  ng-change="setCurrent(pagination.current)"> of {{ pagination.last}}
+        </a>
+    </li><li><a ng-click="setCurrent(nextPage(pagination.current,pagination.last))" >
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </li><li><a ng-click="setCurrent(loopBack(pagination.current,pagination.current-1,pagination.last))">
+            <i class="fa fa-angle-double-right"></i>
+        </a></li>
+  </ul>
+</nav>

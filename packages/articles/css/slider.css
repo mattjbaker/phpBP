@@ -1,0 +1,31 @@
+/* 
+    Created on : Jan 21, 2016, 10:12:56 PM
+    Author     : Matthew
+*/
+
+
+.slide-cursor{
+    opacity:0;
+}
+
+.slide-cursor table{
+    padding:0px;
+    width:100%;
+    height:10px;
+    border:1px solid #959595;
+}
+
+.slide-cursor table td:nth-last-child(1){
+    border-right:2px solid #959595;
+}
+
+.slide-cursor table td{
+    height:10px;
+    background-color:lightgrey;
+    border-right:2px solid #333;
+    cursor:pointer;
+}
+
+.slide-cursor .slide-active{
+    background-color:#333;
+}

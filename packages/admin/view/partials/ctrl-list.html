@@ -1,0 +1,22 @@
+<div class="input-group">
+    <!--<span class="input-group-addon"><i class="fa fa-star"></i></span>-->
+    <input is-editable="locked" ng-change="callback()" id="roles" type="text" name="roles" 
+           placeholder="{{name}}" 
+           class="form-control" ng-model="values"/>   
+    <div class="input-group-btn">
+        <div class="dropdown dropup">
+            
+            <button is-enabled type="button" class="btn btn-default dropdown-toggle" 
+                    data-toggle="dropdown" tabindex="-1">
+                <span>{{name}}</span>
+                <span class="fa fa-caret-up"></span>
+            </button>
+
+            <ul class="dropdown-menu pull-right" >
+                <li ng-repeat="i in displayItems">
+                    <a href="#" ng-click="addNewRole($index, i)">{{i}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

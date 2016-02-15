@@ -1,0 +1,61 @@
+
+<section class="container-fluid main">
+<section  ng-controller="ViewArticlesController" >
+<!--Create modal message for delete here-->
+<!-- <input type="text" ng-model="perPage" class="form-control" ng-blur="setPerPage()">Per page<br>
+{{totalItems.total}} total posts.-->
+
+<dir-pagination-controls ng-if="!single" on-page-change="pageChanged(newPageNumber)"
+                         template-url="paginator-cont" pagination-id="art" ></dir-pagination-controls>
+
+<!--<div >Loading... <i class="fa fa-cog fa-spin"></i></div>-->
+
+<div class="news-box " dir-paginate="article in articles | itemsPerPage:perPage" total-items="totalItems.total"
+     pagination-id="art" current-page="page" hover-morph scroll-morph>
+  <section>
+      <div ng-click="getHref(article._id)" class="finger">
+      <div class="pull-left">
+    <div class="yy-square yy-smaller">
+    <div class="yy-white">
+          <div class="yy-bDot"></div>
+      </div>
+      <div class="yy-black">      
+          <div class="yy-wDot"></div>
+      </div>
+    </div>
+      </div>
+    <h1 class="news-title">
+        <input type="text" ng-if= "shouldEdit(article._id)" class="edible" ng-blur="updateArticle(article)" ng-model="article.title">
+        <div ng-if="!shouldEdit(article._id)">{{article.title}}</div>
+    </h1>
+      </div>
+  <span class="author">( Posted by: {{article.user.udata.username}} On: {{article.created.msec | date: 'medium'}} )</span>
+  <div class="article">
+      <textarea ng-if="shouldEdit(article._id)" rows="8" cols="30" class=" form-control edible" ng-blur="updateArticle(article)"  ng-model="article.content"></textarea>
+      <div ng-if="!shouldEdit(article._id)" >{{article.content}}</div>
+  </div>
+</section>
+  <br>
+  <div class="small-navbar"  ng-if="_authenticated()" >  
+   <ul class ="nav navbar-nav small-nav-menu navbar-collapse collapse artmen">
+       <li ng-if="isAuthor(article.user.userId,_session())" show-tip title="Edit" ng-if="!edit" class="small-nav-btn" ng-click="editArticle(article._id)">
+        <i class="fa fa-edit finger"></i>
+       </li>
+       <li ng-if="isAuthor(article.user.userId,_session()) && edit" show-tip title="save"  class="small-nav-btn" ng-click="updateArticle(article)">
+        <i class="fa fa-save finger"></i>
+       </li>
+       <li class="small-nav-btn" show-tip title="Delete" ng-click="removeArticle(article._id)">  
+        <i class="fa fa-trash-o finger"></i>
+       </li>
+       <li class="small-nav-btn finger">
+         <comm-form root="article._id" parent="article._id"></comm-form>
+       </li>
+   </ul>    
+  </div>
+  <br>
+      <i class="fa fa-bookmark-o" style="margin-left:5px;"></i>
+    <comm-view root="article._id" limit='3' level="0" parent="article._id"></comm-view>
+  </div> 
+<dir-pagination-controls ng-if="!single" template-url="paginator-cont" pagination-id="art" ></dir-pagination-controls>
+</section>
+</section>

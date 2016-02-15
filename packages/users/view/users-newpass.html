@@ -1,0 +1,61 @@
+<!--USERS RESET PASSWORD FORM-->
+<section  class="container-fluid" ng-init="_redirect(!_authenticated(), 'home')"> 
+<standard-msg controller-name="ResetMessageController"></standard-msg>
+
+<div ng-controller="UsersChangePasswordController">
+
+    <form ng-submit="changePassword()" name="PasswordChangeForm">
+
+        <div class="form-group">
+            <div class="input-group">
+                <span title="Reveal" class="input-group-addon finger" show-btn 
+                      btn-id="oldPassword"
+                      >
+                </span>
+                <input required  name="oldPassword" 
+                       id="oldPassword" 
+                       class="form-control"  placeholder="Current Password"
+                       ng-minlength="6" type="password"
+                       ng-model-options="formBehavior"
+                       ng-model="user.oldPassword"/>
+            </div>
+            <div ng-if="PasswordChangeForm.oldPassword.$dirty" ng-messages="PasswordChangeForm.oldPassword.$error" ng-include=" 'packages/system/view/partials/validator-msg-errors.html'"></div>
+
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span title="Reveal" class="input-group-addon finger" show-btn 
+                      btn-id="password"
+                      link-id="confirmPassword">
+                </span>
+                <input required  name="password" 
+                       id="password" 
+                       class="form-control"  placeholder="New Password"
+                       ng-minlength="6" type="password"
+                       ng-model-options="formBehavior"
+                       ng-model="user.password"/>
+            </div>
+
+            <div ng-if="PasswordChangeForm.password.$dirty" ng-messages="PasswordChangeForm.password.$error" ng-include=" 'packages/system/view/partials/validator-msg-errors.html'"></div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span title="Reveal" class="input-group-addon finger" show-btn 
+                      btn-id="confirmPassword" link-id="password">
+                </span>
+                <input required  name="confirmPassword" 
+                       compare-to="user.password"
+                       id="confirmPassword" 
+                       class="form-control"  placeholder="Confirm New Password"
+                       ngminlength="6" type="password"
+                       ng-model-options="formBehavior"
+                       ng-model="user.confirmPassword"/>
+            </div>
+            <div ng-if="PasswordChangeForm.confirmPassword.$dirty" ng-messages="PasswordChangeForm.confirmPassword.$error" ng-include=" 'packages/system/view/partials/validator-msg-errors.html'"></div>
+        </div>
+
+        <div class="form-group save">
+            <button data-ng-disabled="PasswordChangeForm.$invalid" type="submit" class="btn btn-custom submit_button">Save</button>
+        </div>
+    </form>
+</section>

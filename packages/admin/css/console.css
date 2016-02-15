@@ -1,0 +1,45 @@
+#console_container {
+  width: 400px;
+  height: 300px;
+  position: fixed;
+  z-index:9999;
+  background-color:gray;
+  cursor:pointer;
+}
+ #infoi {
+    padding:5px;
+    cursor:text;
+    margin:10px;
+    font-size:10pt;
+    color:white;
+    overflow-y:hidden;
+    background-color:black;
+    width:380px;
+    height:275px;
+}
+
+ #output{
+    font-size:8pt;
+    color:#ccc;
+    padding:5px;
+}
+
+#output pre{
+    
+    overflow-y:scroll;
+    height:245px;
+}
+
+ #prompt{
+     
+    display:inline;
+}
+
+#input{
+    display:inline;
+    border:none; 
+    height:1.5em; 
+    width:3em;
+    line-height:1.5em; 
+    outline:none; 
+}

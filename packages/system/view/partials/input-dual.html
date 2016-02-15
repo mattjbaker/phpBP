@@ -1,0 +1,17 @@
+<div class="input-group">
+  <span class="input-group-addon" id="s1">{{isContent(symbolOne,'s1')}}</span>
+  <input required type="text" class="form-control" name="{{names.n1}}" 
+         ng-focus="inputOne.$dirty=true"
+         ng-model-options="{updateOn:'blur'}"
+         ng-model="modelOne" placeholder="{{holders.ph1}}" />
+  <span class="input-group-addon" id="s2" style="border-left: 0; border-right: 0;">{{isContent(symbolTwo,'s2')}}</span>
+  <input required type="text" class="form-control" name="{{names.n2}}" 
+         ng-focus="inputTwo.$dirty=true"
+         ng-model-options="{updateOn:'blur'}"
+         ng-model="modelTwo" placeholder="{{holders.ph2}}" />
+
+</div>
+<div ng-if="inputOne.$dirty" ng-messages="inputOne.$error" 
+     ng-include=" 'packages/system/view/partials/validator-msg-errors.html'"></div>
+<div ng-if="inputTwo.$dirty" ng-messages="inputTwo.$error" 
+     ng-include=" 'packages/system/view/partials/validator-msg-errors.html'"></div>

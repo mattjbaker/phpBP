@@ -1,0 +1,41 @@
+<section ng-controller="ApiDocsController" ng-init="construct()">
+
+    <h1>API Service Index</h1>
+    Platform: Apache PHP 5  Mode: ( {{args.MODE}} )<br>
+    API Version: ({{args.VERSION}}) ( {{args.NAME}} )
+    Total: {{srv.len}} Services<BR>
+    Developer: {{args.DEV}} &copy; {{args.YEAR}}<br>
+        <nav>
+            <ul class='nav nav-tabs'>
+                <li ng-repeat="s in srv.services">
+                    <a data-toggle='tab' ng-click="select($index)" style="cursor:pointer">{{s.service | capitalize}}</a>
+                </li>
+            </ul>
+        </nav>
+    <table class='table table-condensed'>
+        <thead>
+   <tr><th class='info' colspan='5'>Service: ({{selected.service | capitalize}}) Methods: ({{native_methods.length}})
+           <!-- Inherits: ({{inherited_methods.length}}) methods from ({{parents.length}}) relatives-->
+        </th><tr>  
+    <tr>
+        <th></th><th>URL</th><th>HTTP</th><th>Operation</th><th>Status</th>
+    </tr></thead>
+        <tbody>
+            <tr ng-repeat="method in native_methods" class="{{method.name}}">
+                <td >
+                    <span linker link="{{method.interface.uses}}" ng-if="method.interface.uses" 
+                          class="glyphicon glyphicon-link tip" data-content="{{getRels(method.interface.uses)}}" title=" Relations" data-toggle="popover" ></span>
+                </td>
+                <td>
+                    <a ng-if="method.interface.note"  data-content="{{method.interface.note}}" title="Dev Notes" href="../../{{method.interface.route}}">{{method.interface.route}}</a>
+                    <a ng-if="!method.interface.note" href="../../{{method.interface.route}}">{{method.interface.route}}</a>
+                    <span title="Note" style="color:lightblue" ng-if="method.interface.note" class="glyphicon glyphicon-asterisk small"></span>
+                </td>
+                <td>{{method.interface.method}}</td>
+                <td>{{method.interface.description}}</td>
+                <td class="{{statusStyle(method.interface.status)}}">{{methodStatus(method.interface.status)}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </section>

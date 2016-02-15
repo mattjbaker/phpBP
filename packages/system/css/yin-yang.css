@@ -1,0 +1,121 @@
+/*
+Created by Matt Baker 2015
+*/
+.yy-wrap {
+	position: absolute;
+	width: 100%;
+    
+}
+
+.yy-circle, .yy-white, .yy-black, .yy-wDot, .yy-bDot{
+	border-radius: 50%;
+	padding: 0;
+	margin: 0;      
+}
+
+.yy-white, .yy-black, .yy-wDot, .yy-bDot {
+	position: absolute;
+	border: none;
+	box-shadow: none;
+}
+
+.yy-white, .yy-wDot {
+	background: white;
+}
+
+.yy-black {
+	background: #333333;
+}
+
+.yy-bDot{
+    background:#900;
+}
+
+.yy-white, .yy-black{
+	width: 50%;
+	height: 50%;
+	left: 25%;
+}
+
+.yy-wDot, .yy-bDot {
+	width: 20%;
+	height: 20%;
+	top: 40%;
+	left: 40%;
+}
+
+.yy-black {
+	bottom: 0;
+}
+
+.yy-circle {
+	background: -webkit-linear-gradient(left, white 50%, #333333 50%);
+	background: linear-gradient(to right, white 50%, #333333 50%);
+	position: relative;
+	margin: 0 auto;
+	top: 10%;
+	width: 200px;
+	height: 200px;
+	border: 3px solid #333333;
+        opacity:0.4;
+        
+       -webkit-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+
+}
+
+
+.yy-square{
+    border-radius:0%;
+    background: -webkit-linear-gradient(left, white 50%, #333333 50%);
+    background: linear-gradient(to right, white 50%, #333333 50%);
+    position: relative;
+    margin: 0 auto;
+    top: 10%;
+    width: 200px;
+    height: 200px;
+    border: 3px solid #333333;
+    opacity:0.4;
+  
+    
+    -webkit-transition: all 1s ease;
+     transition: all 1s ease;
+}
+
+.yy-smaller {
+    width:40px;
+    height:40px;
+}
+
+.yy-xsmall{
+    width:10px;
+    height:10px;
+}
+
+.yy-circle:hover{
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    opacity:0.8;
+}
+
+.yy-square:hover{
+    -webkit-transition: all 1s ease;
+     transition: all 1s ease;
+     border-radius: 50%;
+     opacity:0.8; 
+}
+
+
+.yy-hover-in{
+   -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    border-radius:50%;
+    opacity:0.8;  
+}
+
+.yy-hover-out{
+   -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    border-radius:0%;
+    opacity:0.4;   
+}

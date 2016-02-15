@@ -1,0 +1,18 @@
+<div ng-controller='FileUploadController'>
+    Drop File:
+    <div ngf-drop ngf-select ng-model="files" class="drop-box" 
+        ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+        accept="image/*,application/pdf" 
+        ngf-pattern="'image/*,application/pdf'">Drop Images Here ...</div>
+    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+    Files:
+    <ul>
+        <li ng-repeat ="p in progress">
+            {{p.data}}
+        </li>
+        <li ng-repeat="f in preview" style="font:smaller">
+           Uploaded: <img class="thumb" src="{{f.file}}">
+        </li>      
+    </ul>
+    
+</div>

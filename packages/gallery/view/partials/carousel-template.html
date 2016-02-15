@@ -1,0 +1,19 @@
+<div class="matts-carousel-container" mcarousel-target>
+    <div class="matts-carousel-headder">
+        {{title}} Page: ({{data.args.page}}) of ({{tp}}) ({{totalItems.total}}) Files
+    </div>
+<!--<mchide-area>-->
+<div class="matts-carousel-button mc-last-btn" ng-click="lastPage()" mc-btn>
+<i class="fa fa-chevron-circle-left"></i></div>
+<div class="matts-carousel-button mc-next-btn" ng-click="nextPage()" mc-btn>
+<i class="fa fa-chevron-circle-right"></i></div>
+<div class="matts-carousel-row" mcarousel-row>
+<div class="matts-carousel-slide" mcarousel-slide>
+<div class="matts-carousel-unit" ng-repeat="item in items" mcarousel-unit>
+<img width="100px" src="{{item.path}}"></img></div>
+</div></div><div class="matts-carousel-cursor"  mcarousel-cursor>     
+<table><tr><td ng-repeat="pge in pages"
+   ng-class="{'matts-carousel-active':(cpage-1 === $index)}">
+        </td></tr></table></div>
+<!--</mchide-area>-->
+</div>

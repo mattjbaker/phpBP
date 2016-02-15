@@ -1,0 +1,30 @@
+<div class="box-one matts-carosel" ng-controller="ArticlesHeadlineController" mcarosel-target>
+
+      <div mcarosel-btn class="matts-carosel-btn mc-last" ng-click="lessHeadlines()">
+          <i class="fa fa-chevron-circle-left" mcarosel-btn></i>
+      </div>
+      <div mcarosel-btn class="matts-carosel-btn mc-next"  ng-click="moreHeadlines()">
+          <i class="fa fa-chevron-circle-right" mcarosel-btn></i>
+      </div>
+    <div class="title">Latest Headlines</div>
+    <div class="row row-centered headbox-row">                
+    <div class="matts-carosel-container">
+    <div class="col-sm-4 headbox matts-carosel-content animated flipInY"  ng-repeat="article in articles" ng-click="getHref(article._id)">
+        <div>
+            <div><i class="fa fa-newspaper-o"></i> <b>{{article.title}}</b></div>
+            <span class="author">{{article.created.msec | fromNow}}</span>
+            <div>{{article.content | chopcate:true:25:'...'}}</div>
+        </div>
+    </div>
+    </div>
+      <div class="slide-cursor" ng-controller="HeadlinesCursorController">     
+        <table>
+            <tr>
+                <td ng-repeat="pge in pages" 
+                    ng-click="pageChanged(pge+1)"
+                    ng-class="{'slide-active':(page-1 === $index)}">   
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

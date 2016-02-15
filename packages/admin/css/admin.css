@@ -1,0 +1,58 @@
+
+.config-cell{
+    
+    background-color: #959595;;
+}
+
+.config-table{
+    
+ background-color:#eeeeee;
+}
+
+.finger{
+    cursor: pointer;
+}
+
+ .st-sort-ascent:before{
+    content: '\25B2';
+  }
+
+  .st-sort-descent:before{
+    content: '\25BC';
+  }
+
+ .switch{
+      padding-left:10px;
+      text-align:left;
+      width:100%;
+      border:none;
+  }
+  
+  
+  /*Admin switch buttons*/
+  .switch:hover{
+      border-right:5px solid #959595;
+  }
+  
+  .switch:focus{
+      border:none;
+      outline:none;
+  }
+  .switch:active{
+      background-color:#959595;  
+      border:none;
+  }
+  
+  .switch-circleTrue, .switch-keyTrue, .switch-lockTrue{     
+      color:black;
+  }
+  .switch-circleFalse, .switch-keyFalse, .switch-lockFalse{
+      color:#959595;
+  }
+  
+  .menu-head{
+      border:none;
+     background-image:linear-gradient(to bottom,#3c3c3c 0, #222 100% );
+     background-repeat:repeat-x;
+     color:#959595;
+  }

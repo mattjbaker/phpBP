@@ -1,0 +1,18 @@
+<div >
+    <span ng-click="toggleform()">
+        <i class="fa fa-comment-o small finger"></i>
+    </span>
+       <div ng-if='visible' class="comment-form">
+        <form  name="CommentsForm" >
+            <div class="form-group">
+                <textarea rows="3" focus-me="true" ng-blur="saveComment()" 
+                  name="content" ng-model="comment.content" 
+                  id="content" cols="30" placeholder="Comment" class="form-control" required>
+                </textarea>
+                 <span ng-disabled="CommentsForm.$invalid" ng-click="saveComment()">
+                     <i class='fa fa-save small finger'></i>
+                 </span>
+          </div>
+        </form>
+     </div>
+</div> 

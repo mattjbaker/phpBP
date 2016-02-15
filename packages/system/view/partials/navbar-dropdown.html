@@ -1,0 +1,27 @@
+<ul class="nav navbar-nav navbar-left" ng-if="menu.top.shouldRender(_session())"> 
+    <li ng-repeat="item in menu.top.items | orderBy: 'position'" ng-if="item.shouldRender(_session());"
+        ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}"
+        class="{{item.menuItemClass}} "
+        dropdown="item.menuItemType === 'dropdown'">
+                <a navbar-root ng-switch-when="dropdown" href="#" class="dropdown-toggle animated flipInY" data-toggle="dropdown-toggle" >
+                    <span>{{item.title}}&nbsp;<b class="fa fa-caret-down"></b></span>
+                </a>
+                <ul ng-switch-when="dropdown"  auto-drop class="dropdown-menu">                                 
+                        <li ng-repeat="subitem in item.items | orderBy: 'position'"
+                            ng-if ="subitem.shouldRender(_session())" ui-route="{{subitem.uiRoute}}"
+                            ng-class="{divider: subitem.title === 'divider'}">
+                  
+                                <a href="{{subitem.link}}" 
+                                   ng-if="(!subitem.method) && (subitem.title !== 'divider')">
+                                    {{subitem.title}}
+                                </a>
+                                <a href="#" 
+                                ng-if="(subitem.method) && (subitem.title !== 'divider')" 
+                                ng-click="resolveMethod(subitem.method)">
+                                   {{subitem.title}}  
+                                </a>
+                        </li>
+                </ul>
+        <a navbar-root class="animated flipInY" ng-switch-default href="{{item.link}}"><span>{{item.title}}</span></a>
+        </li>
+</ul>

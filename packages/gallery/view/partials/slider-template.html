@@ -1,0 +1,11 @@
+<div class="mc-slider" mcarousel-slider >
+    <div class="mcb-gallery"> 
+        <img class='image-{{slected}}' src="{{items[selected].path}}" height=300 width=400>
+        {{selected}}
+    </div>
+    <div class="mcs-gallery">
+        <img ng-repeat="img in items" src="{{img.path}}" class='thumbnail-{{$index}}' height="100" width="100">
+    </div>
+    <a href="#" class="mc-slider-next"></a>
+</div>
+<br>

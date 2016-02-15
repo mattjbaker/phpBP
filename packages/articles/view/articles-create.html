@@ -1,0 +1,20 @@
+
+<section class="container-fluid main" ng-if="_redirect((!_authenticated()),'home')">
+    
+    <standard-msg controller-name="ArticlesMessageController"></standard-msg>
+<div class="box-one" ng-controller="NewArticleController">
+    <div class="title">Create A New Post</div>
+  <form name="ArticlesForm" ng-submit="saveArticle(_session())">
+   
+      <div class="form-group">
+        <input name="title" type="text" class="form-control" ng-model="article.title" id="title" placeholder="Title" required>
+      </div>
+    <div class="form-group">
+        <textarea name="content" ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+        <button data-ng-disabled="ArticlesForm.$invalid" type="submit" class="btn btn-custom submit_button">Create</button>
+    </div>
+  </form>
+    </div>
+</section>

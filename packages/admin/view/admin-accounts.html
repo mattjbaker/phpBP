@@ -1,0 +1,179 @@
+
+<div class="container-fluid main">
+   
+    <standard-msg controller-name="AdminAccountsMessageController"></standard-msg>
+    
+<tabset>  
+    <tab heading="Manage Users" class="finger">
+
+        <div class="box-one whitebox fade-in"  style="min-width:560px;" data-ng-controller="AdminAccountsController">
+       
+            <div class="title"> Manage User Accounts ({{total_users}})</div>
+            <table st-table="displayCollection" st-safe-src="rowCollection" class="table table-striped">
+                <thead>
+                <tr>    
+                        <th class="finger" st-sort="name">First</th>
+                        <th class="finger" st-sort="last">Last</th>
+                        <th class="finger" st-sort="username">User Name</th>
+                        <th class="finger" st-sort="roles">Roles</th>  
+                        <th class="finger" st-sort="email">Email</th>
+                        <th></th>                      
+                    </tr>
+                    <tr>
+                        <th style="min-width:120px;">  
+                            <button show-tip lock-switch="locked" ng-click="lockedSwitch()" title="Lock User Data"></button>
+                            <button show-tip ng-click="update()" title="Save changes"><i class="fa fa-save"></i></button>
+                            <button show-tip ng-click="undo()" title="Reload"><i class="fa fa-undo"></i></button>
+                        </th>
+                        <th colspan="6">
+                            <div class="input-group text-left" style="width:100%;">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input st-search placeholder="User search" class="input-sm form-control" type="search"/>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="info-body">
+                    <tr ng-repeat="row in displayCollection">
+                         <td>
+                            <input ng-change="addChanged(row)" is-editable="locked" type="text" class="form-control" ng-model="row.name">
+                        </td>
+                         <td>
+                            <input ng-change="addChanged(row)" is-editable="locked" type="text" class="form-control" ng-model="row.last">
+                        </td>
+                        <td>
+                            <input ng-change="addChanged(row)" is-editable="locked" type="text" class="form-control" ng-model="row.username"> 
+                        </td>
+                        <td style="max-width:300px;" >
+                            
+                            <dropdown-input 
+                                            locked="locked" changed="addChanged(row)" 
+                                            data="row" 
+                                            model="row.roles" items="userRoles"></dropdown-input>
+                        </td>
+                        <td>
+                            <input ng-change="addChanged(row)" is-editable="locked" type="text" class="form-control" ng-model="row.email">
+                        </td>
+                        <td ng-controller='AdminUserSettingsController'>
+                            
+                            <div class="dropdown" ng-click='construct(row)'>
+
+                                <button spin-once type="button" class="dropdown-toggle" 
+                                        data-toggle="dropdown" tabindex="-1">
+                                    <i class="fa fa-cog" title="Edit User"></i>
+                                </button>
+
+                                <ul class="dropdown-menu pull-right">
+                                    <li class="menu-head" style='text-align:center'> 
+                                        {{row.username |truncate:10}}
+                                    </li>
+                                    <li>
+                                    <btn-switch
+                                            ng-click='resetPassword()'
+                                            value="isPending()"
+                                            btn="
+                                            {                                            
+                                              'icnTrue':'fa fa-key',
+                                              'icnFalse':'fa fa-key',
+                                              'trueClass':'switch-keyTrue',
+                                              'falseText':'Reset Password',
+                                              'trueText':'Request sent',
+                                              'falseClass':'switch-keyFalse'
+                                            }">
+                                    </btn-switch>
+                                    </li>
+                                    <li>
+                                    <btn-switch
+                                            ng-click='lockAccount()'
+                                            value="user.locked"
+                                            btn="
+                                            { 
+                                              'icnTrue':'fa fa-lock',
+                                              'icnFalse':'fa fa-unlock',
+                                              'trueClass':'switch-lockTrue',
+                                              'falseText':'Lock Account',
+                                              'trueText':'Unlock Account',
+                                              'falseClass':'switch-lockFalse'
+                                            }">
+                                    </btn-switch> 
+                                    </li>
+                                    <li>
+                                    <btn-switch
+                                            ng-click="removeItem(row)"
+                                            value='true'
+                                            btn="
+                                            { 
+                                              'icnTrue':'fa fa-trash',
+                                              'trueClass':'switch-lockTrue',
+                                              'trueText': 'Remove Account',
+                                            }">
+                                    </btn-switch>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr>         
+                </tbody>
+                  <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-left">
+                         <st-pagination st-items-by-page="itemsPerPage" st-template="packages/system/view/partials/pager.html"></st-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </tab> 
+    <tab heading="Create User" class="finger">
+
+    <div class="box-one whitebox fade-in" data-ng-controller="AdminCreateUsersController">
+        <div class="title">Create User Account</div>
+        <form ng-submit="createUser()" name="RegisterForm">
+            <div class="form-group">
+                        <dual-input holders="{'ph1':'First Name','ph2':'Last Name'}"
+                        is-required="true"
+                        names="{'n1':'first','n2':'last'}"
+                        symbol-one="{'class':'fa fa-user'}"
+                        symbol-two="{'value':'|'}"
+                        model-one="user.name"
+                        model-two="user.last">
+            </div>
+             <div class="form-group">
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input required id="username" type="text"
+                       name="username" placeholder="Username" 
+                       class="form-control" ng-model="user.username"/>
+                </div>
+            </div>
+            <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-at"></i></span>
+                        <input required id="email" type="email" name="email" placeholder="Email" class="form-control" ng-model="user.email"/>
+                    </div>
+                </div>
+            <div class="form-group">
+                <show-hide model="user.password" c-name="password" c-id="password">
+
+            </div>
+            <div class="form-group">
+                       <show-hide model="user.confirmPassword" c-name="confirmPassword" c-id="confirmPassword">
+
+            </div>
+            <div class="form-group">
+                <dropdown-input  model="user.roles"
+                                 data="user"
+                                 name="Roles" items="userRoles"></dropdown-input>
+            </div>
+
+            <div class="form-group">
+                <button data-ng-disabled="RegisterForm.$invalid" type="submit" class="btn btn-custom submit_button">Create</button>
+            </div>
+        </form>
+    </div>
+    </tab>  
+</tabset>
+</div>
+
+

@@ -1,0 +1,36 @@
+#
+## PHP error handling for development servers
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors on
+php_flag log_errors on
+php_flag ignore_repeated_errors on
+php_flag ignore_repeated_source off
+php_flag report_memleaks on
+php_flag track_errors on
+php_value docref_root 0
+php_value docref_ext 0
+php_value error_log errors/PHP_errors.log
+# [see footnote 3] # php_value error_reporting 999999999
+php_value error_reporting -1
+php_value log_errors_max_len 0
+
+<Files PHP_errors.log>
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</Files>
+
+<IfModule mod_rewrite.c>
+#
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#
+#RewriteCond %{REQUEST_URI} api
+#RewriteRule api/(.*)$ api/index.php?request=$1 [QSA,NC,L]
+#
+#RewriteCond %{REQUEST_URI} !api
+RewriteRule ^/?(.*)$ index.php?request=$1 [QSA,NC,L]
+#
+</IfModule>

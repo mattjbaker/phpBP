@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><?= $bag['SITE_TITLE']?></title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+     <!-- Semantic META -->
+    <meta name="keywords" content="<?=$bag['KEYWORDS']?>">
+    <meta name="description" content="<?=$bag['DESCRIPTION']?>">
+    <!-- include social media META here -->      
+    <base href="<?= $bag['ROOT']?>" />
+    <!-- favicon -->
+    <link href="<?=$bag['FAVICON']?>" rel="shortcut icon" type="image/x-icon">
+        
+    <?= $agg->loadGlobalStyles(); ?>
+    <?= $agg->loadStyles((bool)$bag['COMPILE_FLAG']); ?>
+</head>
+<body data-ng-controller ="AppController">  
+    <!-- Navigation Bar --> 
+    <system-console ng-if="_console()"></system-console>
+    <section data-ng-include src="'nav-main'"></section> 
+     
+    <section class="main-view fade-in" data-ui-view ></section>
+    <section data-ng-include src="'packages/system/view/footer.html'"></section>
+    
+
+    <?= $agg->loadGlobalPackages();?>
+    <?= $agg->loadSources((bool)$bag['COMPILE_FLAG']); ?> 
+</body>
+</html>

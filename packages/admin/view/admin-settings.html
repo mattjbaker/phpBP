@@ -1,0 +1,35 @@
+<section class="container-fluid main">
+
+  <standard-msg controller-name="AdminSettingsMessageController"></standard-msg>
+
+<div data-ng-controller="AdminSettingsController" class="fade-in">
+
+<div class="box-one whitebox"  data-ng-repeat="(set,v) in settings">
+<table st-table="rowCollection" class="table config-table">
+    <thead>
+        <tr>
+            <th>      
+                <button show-tip title="Lock form" lock-switch="islocked[set]" ng-click="lockedSwitch($index)" title="Unlock to Edit"></button>
+                <button show-tip title="Save form" ng-click="update()" title="Save changes"><i class="fa fa-save"></i></button>
+            </th>
+            <th class="title" style="border:none;">{{set}} CONFIGS</th>
+            </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="(key,val) in v">
+            <td>{{key}}:</td>
+            <td><input is-editable="islocked[set]" class="form-control" data-ng-model="settings[set][key]"  type="text" >
+            </td>    
+        </tr>
+    </tbody> 
+</table>
+</div>
+    <div class="box-one whitebox">
+        <div class="title">
+            Reset to site Defaults.
+        </div>
+        <button class="btn btn-custom" ng-click="reset()">ABORT</button>
+    </div>
+</div>
+
+</section>

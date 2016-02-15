@@ -1,0 +1,60 @@
+
+
+.edible{
+    border:1px solid #ddd;
+    padding:3px;
+}
+
+.news-box{
+  box-sizing: border-box;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom:0;
+  background-color: #fff;
+  border:1px solid #ddd;
+  position: relative;
+  padding: 10px 15px 15px;
+  margin: 0 15px 15px;
+  display: block;
+}
+
+.author{
+    font-size:0.8em;
+    
+}
+.news-box .author{
+    font-size:0.8em;
+}
+
+h1 .news-title{
+    color:#333;
+}
+
+ .article{
+    margin-left:15px;
+    border-top-color:#333;   
+}
+
+.small-navbar{
+    position: relative;
+    min-height: 15px;
+    height:12px;
+    margin-bottom: 2px;
+    border: 1px solid transparent;
+}
+
+.small-nav-menu li{
+    width:15px;
+    margin-left:10px;
+    
+}
+
+.small-nav-btn:hover{
+    font-size:11px;
+}
+
+.small-nav-btn{
+    cursor:pointer;
+    height:25px;
+}
+

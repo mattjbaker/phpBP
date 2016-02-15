@@ -1,0 +1,23 @@
+{
+  
+    "BACKSIDE": {
+      "WHITELIST": "127.0.0.1",
+      "BLACKLIST": "",
+      "API_KEY":   "",
+      "EMAIL": "matjbaker@gmail.com"
+    },
+    
+    "FRONTSIDE":{
+        "SITE_TITLE":   "Matts Site",
+        "ROOT":         "/phpBp/",
+        "VERSION":      "1.5",
+        "KEYWORDS":     "web",
+        "DESCRIPTION":  "A hybrid Rapid deployment framework useing mongo,php, and angularjs",
+        "FAVICION":     "packages/system/images/favicon.ico",
+       
+        "compile_directory": "bin/compiled/sources", 
+        "source_locations" :[],
+        "style_locations"  :[],
+        "COMPILE_FLAG": false
+    }
+}
