@@ -72,36 +72,9 @@ class mongoConnection{
     }
     
     public function mongo_connections(){
-        return array(
-            'local_mongo_connection',
-            'mnongolab1_connection',
-            'os1_connection');
+        return array();
     }
-    
-    private function local_mongo_connection(){
-        $dname = 'mean-dev';
-        $conn  = new MongoClient();
-        return $conn->$dname;
-    }
-    
-    private function mongolab1_connection(){
-        //$name = "openshift_hd25bku3_1m2cd1mc";
-        $nme = "phpbp-dev";   
-        $cn  = 'mongodb://admin:admin123@ds045644.mongolab.com:45644/phpbp-dev';
-        $mlab = new MongoClient($cn);
-        return $mlab->$nme;
-    }
-    
-    private function os1_connection() {
-        $name   = $_ENV["OPENSHIFT_APP_NAME"];
-        $host   = $_ENV["OPENSHIFT_MONGODB_DB_HOST"];
-        $user   = $_ENV["OPENSHIFT_MONGODB_DB_USERNAME"];
-        $passwd = $_ENV["OPENSHIFT_MONGODB_DB_PASSWORD"];
-        $port   = $_ENV["OPENSHIFT_MONGODB_DB_PORT"];
-        $uri = "mongodb://" . $user . ":" . $passwd . "@" . $host . ":" . $port."/".$name;
-        $mongo = new MongoClient($uri);
-        return $mongo->$name;
-  }
+   
   
   public function getCollection($name){
       $db = $this->db->$name;
